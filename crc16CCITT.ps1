@@ -55,10 +55,10 @@ function getCRC16CCITTfromHexString {
 
   $tempCRC = 0xFFFF
 
-	#  quick hack - I assume there exists a valid hex-string...
-	if ($HexString.Length -ge 2) {
+  #  quick hack - I assume there exists a valid hex-string...
+  if ($HexString.Length -ge 2) {
 
-	  # convert hex-string to byte array
+    # convert hex-string to byte array
     $bytes = [byte[]]::new($HexString.Length / 2)
 
     For($i=0; $i -lt $HexString.Length; $i+=2){
@@ -73,7 +73,7 @@ function getCRC16CCITTfromHexString {
 
     }
   # please note that for low-endian the bytes seems to be 'swapped'!
-	$result = ([BitConverter]::ToString([BitConverter]::GetBytes($tempCRC)) -replace '-', '').Substring(0,4)
+  $result = ([BitConverter]::ToString([BitConverter]::GetBytes($tempCRC)) -replace '-', '').Substring(0,4)
   $result
 }
 
